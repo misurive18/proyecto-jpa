@@ -13,19 +13,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * @author mijasoftcode Clase que representa el entity que mapea a la tabla de disquera
- *         con jpa.
+ * @author mijasoftcode.
+ * Clase que representa una entidad de la tabla genero.
  */
 @Entity
-@Table(name = "disquera")
-public class Disquera {
-
+@Table(name = "genero")
+public class Genero {
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idDisquera")
-	private Long idDisquera;
-
-	@Column(name = "descripcion", length = 100)
+	@Column(name = "idGenero")
+	private Long idGenero;
+	
+	@Column(name = "descripcion", length = 500)
 	private String descripcion;
 
 	@Column(name = "fechaCreacion")
@@ -38,17 +39,17 @@ public class Disquera {
 	private boolean estatus;
 
 	/**
-	 * @return the idDisquera
+	 * @return the idGenero
 	 */
-	public Long getIdDisquera() {
-		return idDisquera;
+	public Long getIdGenero() {
+		return idGenero;
 	}
 
 	/**
-	 * @param idDisquera the idDisquera to set
+	 * @param idGenero the idGenero to set
 	 */
-	public void setIdDisquera(Long idDisquera) {
-		this.idDisquera = idDisquera;
+	public void setIdGenero(Long idGenero) {
+		this.idGenero = idGenero;
 	}
 
 	/**
@@ -107,4 +108,5 @@ public class Disquera {
 		this.estatus = estatus;
 	}
 
+	
 }

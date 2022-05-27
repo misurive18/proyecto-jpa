@@ -7,26 +7,41 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 /**
- * @author mijasoftcode Clase que representa el entity que mapea a la tabla de disquera
- *         con jpa.
+ * @author mijasoftcode.
+ * Clase que representa una entidad de subgeneros.
  */
+
 @Entity
-@Table(name = "disquera")
-public class Disquera {
+@Table(name = "subgenero")
+public class SubGenero {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idDisquera")
-	private Long idDisquera;
-
-	@Column(name = "descripcion", length = 100)
+	@Column(name = "idsubgenero")
+	private Long idSubGenero;
+	
+	@Column(name = "descripcion", length = 500)
 	private String descripcion;
+	
+	//@ManyToOne(fetch = FetchType.EAGER)   //muchos subgeneros pertenecen a un genero.
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idGenero")
+	//@Cascade(CascadeType.PERSIST) para guardar
+	//@Cascade(CascadeType.MERGE) es para actualizar
+	@Cascade(CascadeType.REMOVE)
+	private Genero genero;
 
 	@Column(name = "fechaCreacion")
 	private LocalDateTime fechaCreacion;
@@ -38,17 +53,17 @@ public class Disquera {
 	private boolean estatus;
 
 	/**
-	 * @return the idDisquera
+	 * @return the idSubGenero
 	 */
-	public Long getIdDisquera() {
-		return idDisquera;
+	public Long getIdSubGenero() {
+		return idSubGenero;
 	}
 
 	/**
-	 * @param idDisquera the idDisquera to set
+	 * @param idSubGenero the idSubGenero to set
 	 */
-	public void setIdDisquera(Long idDisquera) {
-		this.idDisquera = idDisquera;
+	public void setIdSubGenero(Long idSubGenero) {
+		this.idSubGenero = idSubGenero;
 	}
 
 	/**
@@ -63,6 +78,20 @@ public class Disquera {
 	 */
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	/**
+	 * @return the genero
+	 */
+	public Genero getGenero() {
+		return genero;
+	}
+
+	/**
+	 * @param genero the genero to set
+	 */
+	public void setGenero(Genero genero) {
+		this.genero = genero;
 	}
 
 	/**
@@ -106,5 +135,6 @@ public class Disquera {
 	public void setEstatus(boolean estatus) {
 		this.estatus = estatus;
 	}
-
+	
+	
 }

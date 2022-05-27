@@ -9,6 +9,8 @@
 		<!-- Define las clases que seran mapeadas al configurarse la conexion a 
 			la base de datos. -->
 		<class>com.mijasoftcode.proyectojpa.entity.Disquera</class>
+		<class>com.mijasoftcode.proyectojpa.entity.Genero</class>
+		<class>com.mijasoftcode.proyectojpa.entity.SubGenero</class>
 
 
 		<properties>
